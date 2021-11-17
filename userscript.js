@@ -9,21 +9,21 @@ export default async function ({ addon, console, msg }) {
   twIframe.setAttribute("allowfullscreen", "true");
   twIframe.setAttribute(
     "allow",
-    "autoplay *; camera https://turbowarp.org; document-domain 'none'; fullscreen *; gamepad https://turbowarp.org; microphone https://turbowarp.org;"
+    "autoplay *; camera https://forkphorus.github.io; document-domain 'none'; fullscreen *; gamepad https://forkphorus.github.io; microphone https://forkphorus.github.io;"
   );
   twIframe.className = "sa-tw-iframe";
   twIframeContainer.appendChild(twIframe);
 
   const button = document.createElement("button");
   button.className = "button sa-tw-button";
-  button.title = "TurboWarp";
+  button.title = "Forkphorus";
 
   function removeIframe() {
     twIframeContainer.remove();
     scratchStage.style.display = "";
     button.classList.remove("scratch");
     playerToggled = false;
-    button.title = "TurboWarp";
+    button.title = "Forkphorus";
   }
 
   button.onclick = async () => {
@@ -38,7 +38,7 @@ export default async function ({ addon, console, msg }) {
           const enabledAddons = await addon.self.getEnabledAddons("editor");
           usp.set("addons", enabledAddons.join(","));
         }
-        const iframeUrl = `https://turbowarp.org/${projectId}/embed?${usp}`;
+        const iframeUrl = `https://forkphorus.github.io/#${projectId}/embed?${usp}`;
         twIframe.src = "";
         scratchStage.parentElement.prepend(twIframeContainer);
         // Use location.replace to avoid creating a history entry
@@ -50,7 +50,7 @@ export default async function ({ addon, console, msg }) {
         addon.tab.traps.vm.stopAll();
       } else removeIframe();
     } else {
-      window.open("https://turbowarp.org/" + window.location.pathname.split("/")[2], "_blank", "noopener,noreferrer");
+      window.open("https://forkphorus.github.io/#" + window.location.pathname.split("/")[2], "_blank", "noopener,noreferrer");
     }
   };
 
